@@ -28,16 +28,17 @@ function ajouterUnePersonne(){
 
     //Effacer l'input au clic "ajouter" pour qu'il redevienne vierge jusqu'à la prochaine entrée
     input.value = "";
-    
+
     //S'il y a des données alors on affiche
     if(localStorage.getItem('nom') != null){
         ancien_nom.forEach(element => {
-            /* document.getElementById('output').innerHTML = ancien_nom;  <== ça les affiche mais en ligne avec des virgules*/
-            let elem = document.createElement('li');
+            document.getElementById('output').innerHTML = ancien_nom;  /* <== ça les affiche mais en ligne avec des virgules */
+            /*  let elem = document.createElement('li');
             elem.innerHTML = element;
-            document.body.appendChild(elem);
+            document.body.appendChild(elem); */
+            /* Là, je lui dis qu'il doit m'afficher dans des li toutes les données de mon tableau stocké dans le local Storage */
         });
-        /* Là, je lui dis qu'il doit m'afficher dans des li toutes les données de mon tableau stocké dans le local Storage */
+        
     }
 }
 
@@ -55,7 +56,7 @@ for(let i = 0; i < elemTableau.length; i++){ /* boucle pour récupérer tous les
     element.addEventListener('click', supprimerUnElement);
 }); */
 
-function supprimerUnElement(this){
+function supprimerUnElement(/* this */){
     console.log('la fonction démarre');
     //localStorage.removeItem(this);  
 }
@@ -79,11 +80,42 @@ function toutSupprimer(){
 
 let generer = document.querySelector('.generer'); /* bouton "generer" stocké dans une variable nommée 'generer'*/
 //console.log(generer)
+let nombre = document.querySelector('.nombre'); /* input type nombre stocké dans une variable nommée 'nombre' */
+//console.log(nombre)
 
 /* Evenement sur le bouton "generer" qui déclenche la fonction genererDesGroupes */
 generer.addEventListener('click', genererDesGroupes);
 
-function genererDesGroupes() {  
+//function genererDesGroupes() {  
     //console.log('la fonction démarre')
+    //let valeurNombre = nombre.value /* la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre */
+    
+    //let listeNom = JSON.parse(localStorage.getItem('nom')); /* On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom */
+    
+    //let randomTableau = listeNom.sort(() => 0.5 - Math.random()); /* On trie les éléments du tableau "sort()" en lui disant qu'il prend un nombre aléatoire entre 0 et 1 "Math.random()" et on stocke cette valeur dans la variable randomTableau */
+    
+    //let selection = randomTableau.slice(0, valeurNombre); /* On stocke dans la variable "selection" une copie d'une portion d'origine du tableau et on lui dit de mettre par groupe x nom. "x" étant le nombre de nom, stockée dans la variable valeurNombre */
+    //console.log(selection)
+    
+//}
+
+
+    listeNom = JSON.parse(localStorage.getItem('nom'));
+    valeurNombre = nombre.value 
+
+    function genererDesGroupes(listeNom, valeurNombre) {  
+    let arrayOfArrays = [];
+    let shuffled = [...listeNom];
+    
+    for(let i = shuffled.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    //split the shuffled version by the chunk size
+    for (var i=0; i<shuffled.length; i+=valeurNombre) {
+        arrayOfArrays.push(shuffled.slice(i,i+valeurNombre));
+    }
+    return arrayOfArrays;
 
 }
+    console.log(genererDesGroupes(listeNom, 3)) 
