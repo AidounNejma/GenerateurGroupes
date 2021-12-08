@@ -2,6 +2,7 @@ Générateur de groupes
 
 Ce programme permet de générer une liste de groupe aléatoire en javascript
 
+
 Dans le HTML:
 1 - Créer un input et récupérer sa valeur dans le fichier JS
 
@@ -9,14 +10,19 @@ Dans le HTML:
 
 3 - Créer un bouton supprimer pour supprimer une personne en la sélectionnant
 
+4 - Créer un <select> qui contiendra les différentes options de groupe "2", "3", "4", "5"
+
+
 Dans le JS: 
-4 - Créer un tableau Prenoms = [] qui va regrouper tous les noms que l'on
+5 - Créer un tableau Prenoms = [] qui va regrouper tous les noms que l'on
 récupèrera depuis les inputs
 
-5 - Stocker ces valeurs dans le local storage (mémoire du navigateur)
+6 - Stocker ces valeurs dans le local storage (mémoire du navigateur)
 
-6 - Pour ajouter un nom dans le tableau: créer une fonction qui va insérer la valeur de l'input dans le tableau
+7 - Pour ajouter un nom dans le tableau: créer une fonction qui va insérer la valeur de l'input dans le tableau
 
-7 - Pour supprimer un nom  dans le tableau: créer une fonction qui va supprimer l'indice de la valeur insérée dans le tableau
+8 - Pour supprimer un nom  dans le tableau: créer une fonction qui va supprimer l'indice de la valeur insérée dans le tableau
 
-8 - 
+9 - Au clic du bouton "envoyer" créer une fonction qui va scinder mon tableau en 2, 3, 4, 5...
+Selon le nombre qui a été sélectionné dans la balise <select> et qui va afficher par groupe le nom des élèves
+
