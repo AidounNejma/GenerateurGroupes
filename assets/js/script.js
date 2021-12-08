@@ -86,36 +86,46 @@ let nombre = document.querySelector('.nombre'); /* input type nombre stocké dan
 /* Evenement sur le bouton "generer" qui déclenche la fonction genererDesGroupes */
 generer.addEventListener('click', genererDesGroupes);
 
-//function genererDesGroupes() {  
-    //console.log('la fonction démarre')
-    //let valeurNombre = nombre.value /* la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre */
-    
-    //let listeNom = JSON.parse(localStorage.getItem('nom')); /* On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom */
-    
-    //let randomTableau = listeNom.sort(() => 0.5 - Math.random()); /* On trie les éléments du tableau "sort()" en lui disant qu'il prend un nombre aléatoire entre 0 et 1 "Math.random()" et on stocke cette valeur dans la variable randomTableau */
-    
-    //let selection = randomTableau.slice(0, valeurNombre); /* On stocke dans la variable "selection" une copie d'une portion d'origine du tableau et on lui dit de mettre par groupe x nom. "x" étant le nombre de nom, stockée dans la variable valeurNombre */
-    //console.log(selection)
-    
-//}
 
 
-    listeNom = JSON.parse(localStorage.getItem('nom'));
-    valeurNombre = nombre.value 
 
-    function genererDesGroupes(listeNom, valeurNombre) {  
-    let arrayOfArrays = [];
-    let shuffled = [...listeNom];
-    
-    for(let i = shuffled.length - 1; i > 0; i--){
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+
+    function genererDesGroupes() {  
+        let listeNom = JSON.parse(localStorage.getItem('nom')); // On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom
+        let valeurNombre = nombre.value // la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre
+        let arrayOfArrays = [];
+        let shuffled = [...listeNom];
+        
+        for(let i = shuffled.length - 1; i > 0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        //on découpe la version aléatoire par le nombre que l'on a choisi dans l'input
+        for (var i=0; i<shuffled.length; i+=valeurNombre) {
+            arrayOfArrays.push(shuffled.slice(i,i+valeurNombre));
+        }
     }
-    //split the shuffled version by the chunk size
-    for (var i=0; i<shuffled.length; i+=valeurNombre) {
-        arrayOfArrays.push(shuffled.slice(i,i+valeurNombre));
-    }
-    return arrayOfArrays;
+        console.log(arrayOfArrays)
+    
 
-}
-    console.log(genererDesGroupes(listeNom, 3)) 
+/*      let listeNom = JSON.parse(localStorage.getItem('nom'));
+        let valeurNombre = nombre.value 
+    
+        function genererDesGroupes() {  
+        let arrayOfArrays = [];
+        let shuffled = [...listeNom];
+        
+        for(let i = shuffled.length - 1; i > 0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        //split the shuffled version by the chunk size
+        for (var i=0; i<shuffled.length; i+=valeurNombre) {
+            arrayOfArrays.push(shuffled.slice(i,i+valeurNombre));
+        }
+        return arrayOfArrays;
+    
+    }
+        console.log(genererDesGroupes(listeNom, 3)) 
+
+         */
