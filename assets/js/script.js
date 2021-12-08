@@ -1,8 +1,9 @@
+/* ---------------------------------------------------------------------------------- */
 /* Ajout des noms dans le Local Storage */
 
-let ajouter = document.querySelector('.ajouter') /* bouton "ajouter" stocké dans une variable nommée 'ajouter'*/
+let ajouter = document.querySelector('.ajouter'); /* bouton "ajouter" stocké dans une variable nommée 'ajouter'*/
 //console.log(ajouter)
-let input = document.querySelector('.input') /* input stocké dans une variable nommée 'input' */
+let input = document.querySelector('.input'); /* input stocké dans une variable nommée 'input' */
 //console.log(input)
 
 /* Evenement sur le bouton "ajouter" qui déclenche la fonction ajouterUnePersonne() */
@@ -34,11 +35,13 @@ function ajouterUnePersonne(){
             /* document.getElementById('output').innerHTML = ancien_nom;  <== ça les affiche mais en ligne avec des virgules*/
             let elem = document.createElement('li');
             elem.innerHTML = element;
-            document.body.appendChild(elem)
+            document.body.appendChild(elem);
         });
         /* Là, je lui dis qu'il doit m'afficher dans des li toutes les données de mon tableau stocké dans le local Storage */
     }
 }
+
+/* ---------------------------------------------------------------------------------- */
 
 /* Supprimer une valeur du tableau */
 let elemTableau = document.getElementsByTagName('li');
@@ -48,9 +51,29 @@ for(let i = 0; i < elemTableau.length; i++){ /* boucle pour récupérer tous les
     elemTableau[i].addEventListener('click', supprimerUnElement); /* déclencher un évenement au clic d'un */
 }
 
-function supprimerUnElement(){
-    console.log('test')
+/* elemTableau.forEach(element => {
+    element.addEventListener('click', supprimerUnElement);
+}); */
+
+function supprimerUnElement(this){
+    console.log('la fonction démarre');
+    //localStorage.removeItem(this);  
 }
+
+/* ---------------------------------------------------------------------------------- */
+
+/* Supprimer tout le tableau */
+let toutSupp = document.querySelector('.toutSupprimer'); /* bouton tout supprimer stocké dans la variable "toutSupp" */
+//console.log(toutSupp)
+
+toutSupp.addEventListener('click', toutSupprimer); /* Evenement au clic de "toutSupp" déclenche la fonction toutSupprimer() */
+
+function toutSupprimer(){
+    localStorage.clear(); /* Permet de vider le localStorage complètement */
+    location.reload(); /* Permet de rafraîchir la page ensuite */
+}
+
+/* ---------------------------------------------------------------------------------- */
 
 /* Générer les groupes aléatoirement */
 
@@ -61,5 +84,6 @@ let generer = document.querySelector('.generer'); /* bouton "generer" stocké da
 generer.addEventListener('click', genererDesGroupes);
 
 function genererDesGroupes() {  
-    console.log('la fonction démarre')
+    //console.log('la fonction démarre')
+
 }
