@@ -93,8 +93,8 @@ generer.addEventListener('click', genererDesGroupes);
     function genererDesGroupes() {  
         let listeNom = JSON.parse(localStorage.getItem('nom')); // On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom
         let valeurNombre = nombre.value // la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre
-        let arrayOfArrays = [];
-        let shuffled = [...listeNom];
+        let arrayOfArrays = []; //on créé un tableau vide pour copier nos valeurs dans ce tableau
+        let shuffled = [...listeNom]; // on créé un tableau pour copier nos valeurs de façon aléatoire
         
         for(let i = shuffled.length - 1; i > 0; i--){
             const j = Math.floor(Math.random() * (i + 1));
@@ -104,9 +104,9 @@ generer.addEventListener('click', genererDesGroupes);
         for (var i=0; i<shuffled.length; i+=valeurNombre) {
             arrayOfArrays.push(shuffled.slice(i,i+valeurNombre));
         }
-    }
+
         console.log(arrayOfArrays)
-    
+    }  
 
 /*      let listeNom = JSON.parse(localStorage.getItem('nom'));
         let valeurNombre = nombre.value 
