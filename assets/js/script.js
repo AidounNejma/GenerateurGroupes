@@ -34,10 +34,12 @@ function ajouterUnePersonne(){
     //S'il y a des données alors on affiche
     if(localStorage.getItem('nom') != null){
 
-        ancien_nom.forEach(element => {
+            ancien_nom.forEach(element => {
            /*  document.getElementById('output').innerHTML = ancien_nom;  */ /* <== ça les affiche mais en ligne avec des virgules */
             let elem = document.createElement('li');
             elem.innerHTML = element;
+            elem.className = "monLi";
+            elem.addEventListener('click', supprimerUnElement)
             ul.appendChild(elem); 
             /* Là, je lui dis qu'il doit m'afficher dans des li toutes les données de mon tableau stocké dans le local Storage */
         });
@@ -48,24 +50,17 @@ function ajouterUnePersonne(){
 /* ---------------------------------------------------------------------------------- */
 
 /* Supprimer une valeur du tableau */
-let elemTableau = document.getElementsByTagName('li');
-//console.log(elemTableau);
-
-for(let i = 0; i < elemTableau.length; i++){ /* boucle pour récupérer tous les li */
-    elemTableau[i].addEventListener('click', supprimerUnElement); /* déclencher un évenement au clic d'un */
-}
-
 
 function supprimerUnElement(){
     //console.log('la fonction démarre');
-    //localStorage.removeItem();  
+    localStorage.removeItem('nom');  
 }
 
 /* ---------------------------------------------------------------------------------- */
 
 /* Supprimer tout le tableau */
 let toutSupp = document.getElementsByClassName('toutSupprimer'); /* bouton tout supprimer stocké dans la variable "toutSupp" */
-console.log(toutSupp);
+//console.log(toutSupp);
 
 toutSupp[0].addEventListener('click', toutSupprimer); /* Evenement au clic de "toutSupp" déclenche la fonction toutSupprimer() */
 
