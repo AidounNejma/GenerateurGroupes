@@ -1,7 +1,7 @@
 /* ---------------------------------------------------------------------------------- */
 /* Ajout des noms dans le Local Storage */
 
-let ajouter = document.querySelector('.ajouter'); /* bouton "ajouter" stocké dans une variable nommée 'ajouter'*/
+let ajouter = document.querySelector('.add'); /* bouton "ajouter" stocké dans une variable nommée 'ajouter'*/
 //console.log(ajouter)
 let input = document.querySelector('.input'); /* input stocké dans une variable nommée 'input' */
 //console.log(input)
@@ -60,7 +60,7 @@ function afficher(){
            /*  document.getElementById('output').innerHTML = ancien_nom;  */ /* <== ça les affiche mais en ligne avec des virgules */
             let elem = document.createElement('li');
             elem.innerHTML = element; // change le contenu de mon élément (li)
-            elem.className = "monLi"; // ajoute une classe à mon élément qui s'appelle ".monLi"
+            elem.className = "allLi"; // ajoute une classe à mon élément qui s'appelle ".allLi"
             elem.dataset.id = index; // ajoute un id à mon élément qui sera "index"
             elem.addEventListener('click', supprimerUnElement);// ajoute un évenement au clic d'un li
             ul.appendChild(elem); // dans le ul, je veux faire apparaitre mon <li>
@@ -73,7 +73,7 @@ function afficher(){
     window.addEventListener('DOMContentLoaded', afficher)
 
 /* Supprimer tout le tableau */
-let toutSupp = document.getElementsByClassName('toutSupprimer'); /* bouton tout supprimer stocké dans la variable "toutSupp" */
+let toutSupp = document.getElementsByClassName('deleteAll'); /* bouton tout supprimer stocké dans la variable "toutSupp" */
 //console.log(toutSupp);
 
 toutSupp[0].addEventListener('click', toutSupprimer); /* Evenement au clic de "toutSupp" déclenche la fonction toutSupprimer() */
@@ -87,9 +87,9 @@ function toutSupprimer(){
 
 /* Générer les groupes aléatoirement */
 
-let generer = document.querySelector('.generer'); /* bouton "generer" stocké dans une variable nommée 'generer'*/
+let generer = document.querySelector('.generate'); /* bouton "generer" stocké dans une variable nommée 'generer'*/
 //console.log(generer)
-let nombre = document.querySelector('.nombre'); /* input type nombre stocké dans une variable nommée 'nombre' */
+let nombre = document.querySelector('.number'); /* input type nombre stocké dans une variable nommée 'nombre' */
 //console.log(nombre)
 let listeNom = JSON.parse(localStorage.getItem('nom')); // On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom
 

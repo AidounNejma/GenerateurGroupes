@@ -14,8 +14,7 @@ Dans le HTML:
 
 
 Dans le JS: 
-5 - Créer un tableau Prenoms = [] qui va regrouper tous les noms que l'on
-récupèrera depuis les inputs
+5 - Créer un tableau Prenoms = [] qui va regrouper tous les noms que l'on récupèrera depuis les inputs
 
 6 - Stocker ces valeurs dans le local storage (mémoire du navigateur)
 

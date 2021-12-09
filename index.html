@@ -1,25 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Générateur de Groupes</title>
-    <link rel="icon" type="image/logo" href="https://storage.googleapis.com/redirectioneaza/uploads/40f7c7d847629c9513b44d597855323e/5c5bad759f8c5a0582d069b3477a5bc972b6dfe8">
+    <link rel="icon" type="image/logo"
+        href="https://storage.googleapis.com/redirectioneaza/uploads/40f7c7d847629c9513b44d597855323e/5c5bad759f8c5a0582d069b3477a5bc972b6dfe8">
 </head>
-<body>
-    <h1 class="mainTitle">Générateur de groupes</h1>
-    <form action="get">
-        <input type="text" class="input">
-        <input type="number" class="nombre">
-        <button type="button" class="ajouter">Ajouter</button>
-        <button type="button" class="generer">Générer</button>
-        <button type="button" class="toutSupprimer">Tout supprimer</button>
-        <ul id="output">
 
-        </ul>
-    </form>
+<body>
+    <main>
+
+        <!-- Titre -->
+        <h1 class="mainTitle">Générateur de groupes</h1>
+
+        <div class="twoParts">
+            <!-- Partie Gauche -->
+            <div class="left">
+                <!-- Form pour assembler les éléments (pas vraiment nécessaire mais j'aime bien) -->
+                <form action="get">
+                    <div class="inputs">
+                    <input type="text" class="input">
+                    <input type="number" class="number">
+                </div>
+                    <div class="btn">
+                        <!-- Bouton qui permet d'ajouter des noms -->
+                        <button type="button" class="add">Ajouter</button>
+                        <!-- Bouton qui permet de supprimer tout l'array du local storage -->
+                        <button type="button" class="deleteAll">Tout supprimer</button>
+                    </div>
+                </form>
+
+                <!-- Balise ol pour afficher les noms déjà entrés (des balises li) -->
+                <ol id="output"></ol>
+            </div>
+            <!-- Partie Droite -->
+            <div class="right">
+                <!-- Bouton qui déclenchera la fonction de génération des groupes -->
+                <button type="button" class="generate">Générer</button>
+                <!-- Div qui permettra de montrer la génération des groupes -->
+                <div class="displayGenerate"></div>
+            </div>
+
+        </div>
+
+    </main>
+    <!-- Footer -->
+    <footer>
+
+    </footer>
     <script type="text/javascript" src="assets/js/script.js"></script>
 </body>
+
 </html>
