@@ -55,22 +55,19 @@ for(let i = 0; i < elemTableau.length; i++){ /* boucle pour récupérer tous les
     elemTableau[i].addEventListener('click', supprimerUnElement); /* déclencher un évenement au clic d'un */
 }
 
-/* elemTableau.forEach(element => {
-    element.addEventListener('click', supprimerUnElement);
-}); */
 
-function supprimerUnElement(/* this */){
-    console.log('la fonction démarre');
-    //localStorage.removeItem(this);  
+function supprimerUnElement(){
+    //console.log('la fonction démarre');
+    //localStorage.removeItem();  
 }
 
 /* ---------------------------------------------------------------------------------- */
 
 /* Supprimer tout le tableau */
-let toutSupp = document.querySelector('.toutSupprimer'); /* bouton tout supprimer stocké dans la variable "toutSupp" */
-//console.log(toutSupp)
+let toutSupp = document.getElementsByClassName('toutSupprimer'); /* bouton tout supprimer stocké dans la variable "toutSupp" */
+console.log(toutSupp);
 
-toutSupp.addEventListener('click', toutSupprimer); /* Evenement au clic de "toutSupp" déclenche la fonction toutSupprimer() */
+toutSupp[0].addEventListener('click', toutSupprimer); /* Evenement au clic de "toutSupp" déclenche la fonction toutSupprimer() */
 
 function toutSupprimer(){
     localStorage.clear(); /* Permet de vider le localStorage complètement */
@@ -89,7 +86,7 @@ let listeNom = JSON.parse(localStorage.getItem('nom')); // On récupère l'array
 
 let valeurNombre = nombre.value // la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre
 /* Evenement sur le bouton "generer" qui déclenche la fonction genererDesGroupes */
-generer.addEventListener('click', genererDesGroupes);
-
+/* generer.addEventListener('click', genererDesGroupes);
+ */
 
 
