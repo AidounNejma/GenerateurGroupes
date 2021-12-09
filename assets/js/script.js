@@ -30,7 +30,7 @@ function ajouterUnePersonne(){
     input.value = "";
 
 
-        afficher()// voir fonction ajouter()
+        afficher()// voir fonction afficher()
     
 }
 
@@ -103,4 +103,13 @@ function genererDesGroupes(){
 }
 
 
+/* Idée de fonction trouvée sur stackoverflow pour la génération aléatoire
 
+let unshuffled = ['hello', 'a', 't', 'q', 1, 2, 3, {cats: true}]
+
+let shuffled = unshuffled
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value) 
+
+    */
