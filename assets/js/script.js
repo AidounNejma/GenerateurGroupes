@@ -29,34 +29,48 @@ function ajouterUnePersonne(){
     //Effacer l'input au clic "ajouter" pour qu'il redevienne vierge jusqu'à la prochaine entrée
     input.value = "";
 
-    let ul = document.getElementById("output")
-    ul.innerHTML="";
-    //S'il y a des données alors on affiche
-    if(localStorage.getItem('nom') != null){
 
-            ancien_nom.forEach(element => {
-           /*  document.getElementById('output').innerHTML = ancien_nom;  */ /* <== ça les affiche mais en ligne avec des virgules */
-            let elem = document.createElement('li');
-            elem.innerHTML = element;
-            elem.className = "monLi";
-            elem.addEventListener('click', supprimerUnElement)
-            ul.appendChild(elem); 
-            /* Là, je lui dis qu'il doit m'afficher dans des li toutes les données de mon tableau stocké dans le local Storage */
-        });
-        
-    }
+        afficher()// voir fonction ajouter()
+    
 }
 
 /* ---------------------------------------------------------------------------------- */
 
 /* Supprimer une valeur du tableau */
 
-function supprimerUnElement(){
-    //console.log('la fonction démarre');
-    localStorage.removeItem('nom');  
+function supprimerUnElement(e){
+    let ancien_nom = JSON.parse(localStorage.getItem('nom')); //je récup mon tableau ancien_nom
+    let newArray = ancien_nom.splice(e.target.dataset.id, 1); // je définis une variable qui va stocker le retrait de mon <li> grâce à son id et le 1 est le nombre d'élément à retirer
+    localStorage.setItem('nom', JSON.stringify(ancien_nom)); // je renvoie tout dans le local storage
+    afficher() // j'affiche (voir fonction afficher)
 }
 
 /* ---------------------------------------------------------------------------------- */
+
+/* Afficher : elle va me permettre d'afficher le visuel de mon tableau*/
+function afficher(){ 
+    let ancien_nom = JSON.parse(localStorage.getItem('nom')); // je récupère mon tableau JSON
+    let ul = document.getElementById("output");//je récupère mon élément ul de mon html
+    ul.innerHTML=""; //remet le contenu de ma balise ul à chaque changement 
+    
+    //S'il y a des données alors on affiche:
+    if(localStorage.getItem('nom') != null){
+        /* boucle forEach pour mon tableau ancien_nom */
+            ancien_nom.forEach((element, index) => { //elle prend en paramètre mon element et son index
+           /*  document.getElementById('output').innerHTML = ancien_nom;  */ /* <== ça les affiche mais en ligne avec des virgules */
+            let elem = document.createElement('li');
+            elem.innerHTML = element; // change le contenu de mon élément (li)
+            elem.className = "monLi"; // ajoute une classe à mon élément qui s'appelle ".monLi"
+            elem.dataset.id = index; // ajoute un id à mon élément qui sera "index"
+            elem.addEventListener('click', supprimerUnElement);// ajoute un évenement au clic d'un li
+            ul.appendChild(elem); // dans le ul, je veux faire apparaitre mon <li>
+            /* Là, je lui dis qu'il doit m'afficher dans des li toutes les données de mon tableau stocké dans le local Storage */
+        });
+        
+    }
+}
+
+    window.addEventListener('DOMContentLoaded', afficher)
 
 /* Supprimer tout le tableau */
 let toutSupp = document.getElementsByClassName('toutSupprimer'); /* bouton tout supprimer stocké dans la variable "toutSupp" */
@@ -80,8 +94,13 @@ let nombre = document.querySelector('.nombre'); /* input type nombre stocké dan
 let listeNom = JSON.parse(localStorage.getItem('nom')); // On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom
 
 let valeurNombre = nombre.value // la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre
+
 /* Evenement sur le bouton "generer" qui déclenche la fonction genererDesGroupes */
-/* generer.addEventListener('click', genererDesGroupes);
- */
+generer.addEventListener('click', genererDesGroupes);
+
+function genererDesGroupes(){
+    
+}
+
 
 
