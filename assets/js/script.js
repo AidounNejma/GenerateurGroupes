@@ -29,13 +29,16 @@ function ajouterUnePersonne(){
     //Effacer l'input au clic "ajouter" pour qu'il redevienne vierge jusqu'à la prochaine entrée
     input.value = "";
 
+    let ul = document.getElementById("output")
+    ul.innerHTML="";
     //S'il y a des données alors on affiche
     if(localStorage.getItem('nom') != null){
+
         ancien_nom.forEach(element => {
-            document.getElementById('output').innerHTML = ancien_nom;  /* <== ça les affiche mais en ligne avec des virgules */
-            /*  let elem = document.createElement('li');
+           /*  document.getElementById('output').innerHTML = ancien_nom;  */ /* <== ça les affiche mais en ligne avec des virgules */
+            let elem = document.createElement('li');
             elem.innerHTML = element;
-            document.body.appendChild(elem); */
+            ul.appendChild(elem); 
             /* Là, je lui dis qu'il doit m'afficher dans des li toutes les données de mon tableau stocké dans le local Storage */
         });
         
@@ -82,50 +85,11 @@ let generer = document.querySelector('.generer'); /* bouton "generer" stocké da
 //console.log(generer)
 let nombre = document.querySelector('.nombre'); /* input type nombre stocké dans une variable nommée 'nombre' */
 //console.log(nombre)
+let listeNom = JSON.parse(localStorage.getItem('nom')); // On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom
 
+let valeurNombre = nombre.value // la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre
 /* Evenement sur le bouton "generer" qui déclenche la fonction genererDesGroupes */
 generer.addEventListener('click', genererDesGroupes);
 
 
 
-
-
-    function genererDesGroupes() {  
-        let listeNom = JSON.parse(localStorage.getItem('nom')); // On récupère l'array stocké dans le local storage et on le met dans une variable nommée listeNom
-        let valeurNombre = nombre.value // la valeur entrée dans l'input de type nombre est récupérée et stockée dans la variable valeurNombre
-        let arrayOfArrays = []; //on créé un tableau vide pour copier nos valeurs dans ce tableau
-        let shuffled = [...listeNom]; // on créé un tableau pour copier nos valeurs de façon aléatoire
-        
-        for(let i = shuffled.length - 1; i > 0; i--){
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        //on découpe la version aléatoire par le nombre que l'on a choisi dans l'input
-        for (var i=0; i<shuffled.length; i+=valeurNombre) {
-            arrayOfArrays.push(shuffled.slice(i,i+valeurNombre));
-        }
-
-        console.log(arrayOfArrays)
-    }  
-
-/*      let listeNom = JSON.parse(localStorage.getItem('nom'));
-        let valeurNombre = nombre.value 
-    
-        function genererDesGroupes() {  
-        let arrayOfArrays = [];
-        let shuffled = [...listeNom];
-        
-        for(let i = shuffled.length - 1; i > 0; i--){
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        //split the shuffled version by the chunk size
-        for (var i=0; i<shuffled.length; i+=valeurNombre) {
-            arrayOfArrays.push(shuffled.slice(i,i+valeurNombre));
-        }
-        return arrayOfArrays;
-    
-    }
-        console.log(genererDesGroupes(listeNom, 3)) 
-
-         */
