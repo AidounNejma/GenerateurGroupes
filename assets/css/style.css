@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+/* Général */
+* {
+    /* "*" Permet de prendre tout du fichier html, on met ensuite les valeurs à 0 pour que tout colle (qu'il n'y est pas d'espace blanc sur les cotés) */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Ubuntu;
+}
+
+  /* Création de variables de couleurs pour toujours garder les mêmes sans se tromper */
+:root {
+    --main-white: #fff;
+    --main-black: #000;
+    --main-grey: #ebebeb;
+    --main-gold: #c99049;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-white);
+}
+/* Fin Général */
+/* -------------------------------------------------------------------------------------------------- */
+
+/* Main */
+.mainTitle{
+    text-align: center;
+}

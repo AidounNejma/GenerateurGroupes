@@ -24,5 +24,6 @@ récupèrera depuis les inputs
 8 - Pour supprimer un nom  dans le tableau: créer une fonction qui va supprimer l'indice de la valeur insérée dans le tableau
 
 9 - Au clic du bouton "envoyer" créer une fonction qui va scinder mon tableau en 2, 3, 4, 5...
-Selon le nombre qui a été sélectionné dans la balise <select> et qui va afficher par groupe le nom des élèves
+Selon le nombre qui a été sélectionné dans l'input number et qui va afficher par groupe le nom des élèves
+Il faudra qu'elle utilise la fonction split() et la fonction math.random()
 
