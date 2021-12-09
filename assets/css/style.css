@@ -29,9 +29,8 @@ a {
 main{
     display: flex;
     flex-direction: column;
-    background-image: url('../img/cool-background.svg');
-    background-repeat: no-repeat;
-    background-size: cover;
+/*  background-repeat: no-repeat;
+    background-size: cover; */
 }
 
 button{
@@ -53,7 +52,6 @@ button:hover{
 .mainTitle{
     text-align: center;
     padding: 3% 0;
-    color: #fff;
 }
 
 /* les deux parties */
@@ -111,6 +109,7 @@ button:hover{
     line-height: 2rem;
     overflow: scroll;
     background-color: #fff;
+    box-shadow: 10px 5px 5px 5px #0000001e;
 }
 
 /* ----------------------------------------------------------------------------------------------------- */
@@ -133,6 +132,7 @@ button:hover{
     margin-top: 7%;
     overflow: scroll;
     background-color: #fff;
+    box-shadow: 10px 5px 5px 5px #0000001e;
 }
 
 /* ----------------------------------------------------------------------------------------------------- */
